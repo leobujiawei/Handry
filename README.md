@@ -13,7 +13,9 @@ Handry 是一款面向 AI Coding 工作流和 HTML 项目设计走查的可视�
 | Intel 芯片 | [下载 Intel 芯片版](https://github.com/leobujiawei/Handry/releases/download/v1.06-beta/Handry-v1.06-beta-x64.dmg) |
 
 [查看最新版本](https://github.com/leobujiawei/Handry/releases/latest)
-网站：[https://leobujiawei.github.io/Handry/](https://leobujiawei.github.io/Handry/)
+
+网站：
+[https://leobujiawei.github.io/Handry/](https://leobujiawei.github.io/Handry/)
 ## 功能
 
 - 直接选择页面中的文字、图片、图形和容器
