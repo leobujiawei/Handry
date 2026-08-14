@@ -1,0 +1,10 @@
+node_modules/
+.pnpm-store/
+dist/
+dist-electron/
+releases/
+website/
+.cache/
+*.visual-editor.tmp
+*.tsbuildinfo
+.DS_Store

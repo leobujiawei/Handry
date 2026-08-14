@@ -1,0 +1,83 @@
+{
+  "name": "handry",
+  "productName": "Handry",
+  "version": "1.0.6-beta.0",
+  "description": "Handry — Visual HTML Editor for macOS",
+  "author": "Handry",
+  "private": true,
+  "main": "dist-electron/main/index.js",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"tsc -p electron/tsconfig.json --watch\" \"wait-on tcp:5173 dist-electron/main/index.js && VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",
+    "build": "tsc -b && vite build && tsc -p electron/tsconfig.json",
+    "typecheck": "tsc -b --pretty false",
+    "test:save": "tsc -p electron/tsconfig.json --pretty false && node --test dist-electron/main/file-edit.test.js",
+    "start": "electron .",
+    "dist:mac": "pnpm run build && electron-builder --mac dmg --arm64 --x64"
+  },
+  "dependencies": {
+    "parse5": "^7.1.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "concurrently": "latest",
+    "electron": "latest",
+    "electron-builder": "^26.15.3",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "wait-on": "latest"
+  },
+  "build": {
+    "appId": "com.handry.visual-html-editor",
+    "productName": "Handry",
+    "asar": true,
+    "artifactName": "Handry-v1.06-beta-${arch}.${ext}",
+    "directories": {
+      "output": "releases/Handry-v1.06-beta"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/visual-html-editor-icon.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "title": "Handry v1.06-beta",
+      "iconSize": 112,
+      "window": {
+        "width": 540,
+        "height": 380
+      },
+      "contents": [
+        {
+          "x": 150,
+          "y": 190,
+          "type": "file"
+        },
+        {
+          "x": 390,
+          "y": 190,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  }
+}
