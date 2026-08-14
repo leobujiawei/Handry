@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { elementTreeContains, type ElementTreeNode } from './element-tree-model'
+import { elementTreeContains, elementTreeRevealDelta, type ElementTreeNode } from './element-tree-model'
 
 export type { ElementTreeNode } from './element-tree-model'
 
@@ -11,7 +11,7 @@ function nodeSuffix(node:ElementTreeNode){
 
 export function ElementTree({nodes,selectedSelector,onSelect}:{nodes:ElementTreeNode[];selectedSelector:string;onSelect:(selector:string)=>void}){
  const selectedRef=useRef<HTMLButtonElement|null>(null)
- useEffect(()=>{const frame=window.requestAnimationFrame(()=>selectedRef.current?.scrollIntoView({block:'nearest'}));return()=>window.cancelAnimationFrame(frame)},[selectedSelector])
+ useEffect(()=>{const frame=window.requestAnimationFrame(()=>{const target=selectedRef.current,panel=target?.closest<HTMLElement>('.files');if(!target||!panel)return;const itemRect=target.getBoundingClientRect(),panelRect=panel.getBoundingClientRect();panel.scrollTop+=elementTreeRevealDelta(itemRect.top,itemRect.bottom,panelRect.top,panelRect.bottom)});return()=>window.cancelAnimationFrame(frame)},[selectedSelector])
  if(!nodes.length)return <div className="empty small element-tree-empty">打开 HTML 文件后显示页面控件</div>
  return <div className="element-tree" role="tree" aria-label="页面控件目录">{nodes.map(node=><ElementTreeItem key={node.sourceSelector} node={node} depth={0} selectedSelector={selectedSelector} onSelect={onSelect} selectedRef={selectedRef}/>)}</div>
 }
