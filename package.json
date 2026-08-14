@@ -1,7 +1,7 @@
 {
   "name": "handry",
   "productName": "Handry",
-  "version": "1.0.6-beta.0",
+  "version": "2.0.0-beta.0",
   "description": "Handry — Visual HTML Editor for macOS",
   "author": "Handry",
   "private": true,
@@ -35,9 +35,9 @@
     "appId": "com.handry.visual-html-editor",
     "productName": "Handry",
     "asar": true,
-    "artifactName": "Handry-v1.06-beta-${arch}.${ext}",
+    "artifactName": "Handry-v2.0-beta-${arch}.${ext}",
     "directories": {
-      "output": "releases/Handry-v1.06-beta"
+      "output": "releases/Handry-v2.0-beta"
     },
     "files": [
       "dist/**/*",
@@ -59,7 +59,7 @@
       ]
     },
     "dmg": {
-      "title": "Handry v1.06-beta",
+      "title": "Handry v2.0-beta",
       "iconSize": 112,
       "window": {
         "width": 540,

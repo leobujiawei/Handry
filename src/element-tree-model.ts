@@ -1,0 +1,5 @@
+export type ElementTreeNode={sourceSelector:string;tagName:string;id:string;className:string;context?:string;children:ElementTreeNode[]}
+
+export function elementTreeContains(node:ElementTreeNode,selector:string):boolean{
+ return node.sourceSelector===selector||node.children.some(child=>elementTreeContains(child,selector))
+}
