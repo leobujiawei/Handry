@@ -1,6 +1,7 @@
 # Handry
 
 **Visual HTML Editor for macOS**
+![Uploading image.png…]()
 
 Handry 是一款面向 AI Coding 工作流和 HTML 项目设计走查的可视化编辑器。AI 生成核心功能后，文字、颜色、间距和尺寸等视觉细节往往仍需大量对话反复调整，语言描述既耗时又不够直观。Handry 让开发者和设计师直接选择页面元素、调整视觉样式，并将修改保存回源码。
 
