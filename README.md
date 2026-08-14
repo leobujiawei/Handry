@@ -10,7 +10,7 @@ Handry 是一款面向 AI Coding 工作流和 HTML 项目设计走查的可视�
 
 | Mac 类型 | 安装包 |
 |---|---|
-| Apple 芯片（M1、M2、M3、M4） | [下载 Apple 芯片版](https://github.com/leobujiawei/Handry/releases/download/v1.06-beta/Handry-v1.06-beta-arm64.dmg) |
+| Apple 芯片（M1、M2、M3、M4、M5） | [下载 Apple 芯片版](https://github.com/leobujiawei/Handry/releases/download/v1.06-beta/Handry-v1.06-beta-arm64.dmg) |
 | Intel 芯片 | [下载 Intel 芯片版](https://github.com/leobujiawei/Handry/releases/download/v1.06-beta/Handry-v1.06-beta-x64.dmg) |
 
 [查看最新版本](https://github.com/leobujiawei/Handry/releases/latest)
