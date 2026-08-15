@@ -1,9 +1,10 @@
-import { app, BrowserWindow, dialog, ipcMain } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, type SaveDialogOptions } from 'electron'
 import path from 'node:path'
 import fs from 'node:fs/promises'
 import crypto from 'node:crypto'
 import { applySaveRequest, type SaveRequest } from './file-edit'
 import { previewUrl } from './preview-url'
+import { assertSeparateExportFile, markdownExportPath, safeSuggestedName, type ChangeExportRequest } from './change-export'
 
 type TreeNode = { name: string; path: string; type: 'file' | 'directory'; children?: TreeNode[] }
 type BackupRecord={id:string;timestamp:string;filePath:string;backupPath:string;size:number}
@@ -41,6 +42,7 @@ ipcMain.handle('project:open', async event => {
 })
 ipcMain.handle('file:read', async (_e,p:string) => {const source=await fs.readFile(p,'utf8');return{source,url:previewUrl(p,source)}})
 ipcMain.handle('file:save', async (_e,req:SaveRequest) => { const current=await fs.readFile(req.filePath,'utf8');const next=applySaveRequest(current,req);await createBackup(req.filePath,current);const tmp=req.filePath+'.visual-editor.tmp';await fs.writeFile(tmp,next,'utf8');await fs.rename(tmp,req.filePath);const verified=await fs.readFile(req.filePath,'utf8');if(verified!==next)throw new Error('磁盘写入验证失败');return{source:verified,filePath:req.filePath,changed:true} })
+ipcMain.handle('change-log:export',async(event,req:ChangeExportRequest)=>{if(!req||typeof req.content!=='string')throw new Error('导出内容无效');const parent=BrowserWindow.fromWebContents(event.sender),suggested=safeSuggestedName(req.suggestedName),defaultPath=req.directory?path.join(req.directory,suggested):suggested;const options:SaveDialogOptions={title:'导出改动明细',buttonLabel:'导出',defaultPath,filters:[{name:'Markdown 文件',extensions:['md']}]};const result=parent?await dialog.showSaveDialog(parent,options):await dialog.showSaveDialog(options);if(result.canceled||!result.filePath)return null;const output=assertSeparateExportFile(markdownExportPath(result.filePath),req.originalPaths||[]);await fs.writeFile(output,req.content,'utf8');return{filePath:output}})
 ipcMain.handle('backup:list',()=>listBackups())
 ipcMain.handle('backup:restore',async(_e,record:BackupRecord)=>{const root=path.resolve(app.getPath('userData'),'backups');const backup=path.resolve(record.backupPath);if(!backup.startsWith(root+path.sep))throw new Error('无效的备份路径');const restored=await fs.readFile(backup,'utf8');const current=await fs.readFile(record.filePath,'utf8');await createBackup(record.filePath,current);const tmp=record.filePath+'.visual-editor.restore.tmp';await fs.writeFile(tmp,restored,'utf8');await fs.rename(tmp,record.filePath);return{filePath:record.filePath,source:restored,url:previewUrl(record.filePath,restored)}})
 app.whenReady().then(createWindow); app.on('window-all-closed',()=>{if(process.platform!=='darwin')app.quit()}); app.on('activate',()=>{if(BrowserWindow.getAllWindows().length===0)createWindow()})

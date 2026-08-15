@@ -805,3 +805,25 @@ body.adjusting-range iframe { pointer-events: none !important; }
 .resize-height:hover {
   background: linear-gradient(to top,var(--handry-blue) 0 3px,transparent 3px) left bottom/100% 7px no-repeat !important;
 }
+
+/* Save modal header keeps the non-destructive export action separate from saving. */
+.save-changes-header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 20px 14px;
+}
+.save-changes-heading { min-width: 0; }
+.save-changes-heading h2 { margin: 0; color: #eee; font-size: 18px; }
+.save-changes-heading p { margin: 6px 0 0; color: #999; }
+.save-export-button {
+  flex: 0 0 auto;
+  min-width: 124px;
+  margin-top: 1px;
+  border-color: #4a4a4a;
+  background: #2b2b2b;
+  color: #ddd;
+}
+.save-export-button:hover { border-color: #6d88d9; background: #303849; color: #fff; }
