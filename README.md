@@ -1,36 +1,61 @@
 # Handry
 
-一个可运行的 macOS 原型：打开本地静态 HTML 项目，在画布中点选元素，通过右侧面板实时调整常用 CSS，并以 inline style 保存回原 HTML。
+**Visual HTML Editor for macOS**
+<img width="7248" height="3460" alt="img_v3_0214i_cf23881e-35d5-4028-8e6d-14419ce8458g" src="https://github.com/user-attachments/assets/fad9a6df-a965-4246-82c2-bc49b06d0f54" />
 
-## 运行
+Handry 是一款面向HTML项目的可视化编辑器。
+-在用AI Coding工具完成核心页面后，文字、颜色、间距和尺寸等视觉细节往往仍需大量对话反复调整，语言描述既耗时又不够直观。Handry 让开发者和设计师直接选择页面元素、调整视觉样式，并将修改保存回源码。
 
-需要 Node.js 20+。
+-主要适合几个场景：
+- **AI Coding：** Codex、Cursor、Trae 等任意 AI 工具在完成核心页面功能后，可以在 Handry 中打开本地目录，直接调整页面的视觉样式细节。
 
-```bash
-npm install
-npm run dev
-```
+- **HTML 项目设计走查：** 设计师可以直接在页面上修改样式，减少反复截图、标注和沟通的成本。
 
-生产构建与启动：
+- **AI 生成产物编辑：** 使用豆包、Trae、WorkBuddy 等 AI 工具生成的产物，只要格式是 HTML，都可以像编辑文档或 PPT 一样直接修改内容。
 
-```bash
-npm run build
-npm start
-```
 
-## 使用方式
 
-1. 点击“打开文件夹”，授权一个包含静态 HTML 的目录。
-2. 在左侧选择 `.html` 文件。
-3. 在中间画布悬停、点击任意 DOM 元素。
-4. 在右侧修改字号、颜色、背景、尺寸、间距或圆角。
-5. 使用 Undo / Redo 试调；点击“保存”后修改写入该元素的 inline style。
+## 下载
 
-保存前会确认磁盘文件仍与载入版本一致，并先写临时文件再原子替换。若文件已被其他程序修改，编辑器会拒绝覆盖。
+| Mac 类型 | 安装包 |
+|---|---|
+| Apple 芯片（M1、M2、M3、M4、M5） | [下载 Apple 芯片版](https://github.com/leobujiawei/Handry/releases/download/v2.01-beta/Handry-v2.01-beta-arm64.dmg) |
+| Intel 芯片 | [下载 Intel 芯片版](https://github.com/leobujiawei/Handry/releases/download/v2.01-beta/Handry-v2.01-beta-x64.dmg) |
 
-## 第一版限制
+[查看 v2.01-beta](https://github.com/leobujiawei/Handry/releases/tag/v2.01-beta)
 
-- 面向静态 HTML；不映射 React/Vue/Svelte 源码。
-- 只写 inline style，不修改外部 CSS 规则。
-- 复杂、由脚本动态生成或浏览器自动补全结构的 DOM，可能无法安全映射回源文件，此时会拒绝保存。
-- 当前 Undo / Redo 针对尚未保存的样式调整。
+网站：
+[https://leobujiawei.github.io/Handry/](https://leobujiawei.github.io/Handry/)
+## 功能
+
+- 直接选择页面中的文字、图片、图形和容器
+- 修改文案、字号、颜色和图片地址
+- 调整填充、描边、宽高、圆角和透明度
+- 编辑内边距（Padding）和外边距（Margin）
+- 支持长宽比例锁定和响应式画布
+- 支持撤销、历史备份和安全保存
+
+## 使用方法
+
+1. 打开 Handry，选择本地 HTML 项目。
+2. 在画布中选择需要调整的元素。
+3. 使用右侧面板修改内容和样式。
+4. 确认修改并保存回本地文件。
+
+## 安装提示
+
+下载对应的 DMG，将 `Handry.app` 拖入 Applications 文件夹。
+
+当前版本尚未经过 Apple Developer ID 公证。如果首次打开被阻止，请在 Finder 中右键点击 Handry，然后选择“打开”。
+
+## 隐私
+
+Handry 在本地读取和修改项目文件，不需要将项目上传到在线编辑服务。
+
+## 反馈
+
+遇到问题或有功能建议，请前往 [GitHub Issues](https://github.com/leobujiawei/Handry/issues)。
+
+---
+
+**Handry — 让页面的视觉调整更直接。**
