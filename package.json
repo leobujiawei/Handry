@@ -48,6 +48,11 @@
     "mac": {
       "category": "public.app-category.developer-tools",
       "icon": "assets/visual-html-editor-icon.png",
+      "identity": "-",
+      "hardenedRuntime": true,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.inherit.plist",
+      "notarize": false,
       "target": [
         {
           "target": "dmg",
