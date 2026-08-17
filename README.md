@@ -1,6 +1,6 @@
 # Handry
 
-**Visual HTML Editor for macOS**
+**Visual HTML Editor for macOS and Windows**
 <img width="7248" height="3460" alt="img_v3_0214i_cf23881e-35d5-4028-8e6d-14419ce8458g" src="https://github.com/user-attachments/assets/fad9a6df-a965-4246-82c2-bc49b06d0f54" />
 
 Handry 是一款面向HTML项目的可视化编辑器。
@@ -17,10 +17,11 @@ Handry 是一款面向HTML项目的可视化编辑器。
 
 ## 安装包下载
 
-| Mac 类型 | 安装包 |
+| 系统 | 安装包 |
 |---|---|
-| Apple 芯片（M1、M2、M3、M4、M5） | [下载 Apple 芯片版](https://github.com/leobujiawei/Handry/releases/download/v2.01-beta/Handry-v2.01-beta-arm64.dmg) |
-| Intel 芯片 | [下载 Intel 芯片版](https://github.com/leobujiawei/Handry/releases/download/v2.01-beta/Handry-v2.01-beta-x64.dmg) |
+| macOS · Apple 芯片（M1、M2、M3、M4、M5） | [下载 Apple 芯片版](https://github.com/leobujiawei/Handry/releases/download/v2.01-beta/Handry-v2.01-beta-arm64.dmg) |
+| macOS · Intel 芯片 | [下载 Intel 芯片版](https://github.com/leobujiawei/Handry/releases/download/v2.01-beta/Handry-v2.01-beta-x64.dmg) |
+| Windows · x64 | [下载 Windows x64 版](https://github.com/leobujiawei/Handry/releases/download/v2.01-beta/Handry-v2.01-beta-x64-setup.exe) |
 
 [查看 v2.01-beta](https://github.com/leobujiawei/Handry/releases/tag/v2.01-beta)
 
@@ -44,9 +45,11 @@ Handry 是一款面向HTML项目的可视化编辑器。
 
 ## 安装提示
 
-下载对应的 DMG，将 `Handry.app` 拖入 Applications 文件夹。
+macOS：下载对应的 DMG，将 `Handry.app` 拖入 Applications 文件夹。
 
 当前版本尚未经过 Apple Developer ID 公证。如果首次打开被阻止，请在 Finder 中右键点击 Handry，然后选择“打开”。
+
+Windows：下载 x64 安装程序并按提示安装。当前测试版尚未进行微软代码签名；如果 SmartScreen 拦截，请点击“更多信息”后选择“仍要运行”。
 
 ## 隐私
 

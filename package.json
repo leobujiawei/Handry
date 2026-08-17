@@ -2,7 +2,7 @@
   "name": "handry",
   "productName": "Handry",
   "version": "2.0.1-beta.0",
-  "description": "Handry — Visual HTML Editor for macOS",
+  "description": "Handry — Visual HTML Editor",
   "author": "Handry",
   "private": true,
   "main": "dist-electron/main/index.js",
@@ -12,7 +12,8 @@
     "typecheck": "tsc -b --pretty false",
     "test:save": "tsc -p electron/tsconfig.json --pretty false && node --test dist-electron/main/file-edit.test.js",
     "start": "electron .",
-    "dist:mac": "pnpm run build && electron-builder --mac dmg --arm64 --x64"
+    "dist:mac": "pnpm run build && electron-builder --mac dmg --arm64 --x64",
+    "dist:win": "pnpm run build && electron-builder --win nsis --x64"
   },
   "dependencies": {
     "parse5": "^7.1.2"
@@ -62,6 +63,24 @@
           ]
         }
       ]
+    },
+    "win": {
+      "icon": "assets/visual-html-editor-icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "Handry-v2.01-beta-${arch}-setup.${ext}"
     },
     "dmg": {
       "title": "Handry v2.01-beta",

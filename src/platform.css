@@ -1,0 +1,2 @@
+header { padding-left: 12px; }
+html[data-platform='darwin'] header { padding-left: 82px; }

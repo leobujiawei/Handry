@@ -25,7 +25,8 @@ async function tree(dir: string): Promise<TreeNode[]> {
 function createWindow() {
   const iconPath=path.join(__dirname,'../../assets/visual-html-editor-icon.png')
   if(process.platform==='darwin')app.dock?.setIcon(iconPath)
-  const win = new BrowserWindow({ width: 1440, height: 900, minWidth: 980, minHeight: 640, title:'Handry — Visual HTML Editor', icon:iconPath, titleBarStyle: 'hiddenInset', backgroundColor: '#181818', webPreferences: { preload: path.join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: false, webSecurity: false } })
+  const windowChrome=process.platform==='darwin'?{titleBarStyle:'hiddenInset' as const}:{autoHideMenuBar:true}
+  const win = new BrowserWindow({ width: 1440, height: 900, minWidth: 980, minHeight: 640, title:'Handry — Visual HTML Editor', icon:iconPath, ...windowChrome, backgroundColor: '#181818', webPreferences: { preload: path.join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: false, webSecurity: false } })
   if (process.env.VITE_DEV_SERVER_URL) win.loadURL(process.env.VITE_DEV_SERVER_URL)
   else win.loadFile(path.join(__dirname, '../../dist/index.html'))
   win.once('ready-to-show', () => { win.show(); win.focus(); app.focus({ steal: true }) })
